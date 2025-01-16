@@ -13,6 +13,12 @@ public class Blob {
         // Create a new Scanner for user input
         Scanner scanner = new Scanner(System.in);
 
+        // Create an Array to store up to 200 tasks
+        String[] tasks = new String[200];
+
+        // Initialize number of tasks to be 0 at first
+        int numOfTask = 0;
+
         while (true) {
             String input = scanner.nextLine();
 
@@ -22,8 +28,21 @@ public class Blob {
                 break;
             }
 
-            // Echo the user input
-            System.out.println(input);
+            // List command lists all tasks of the user
+            if (input.equals("list")) {
+                for (int i = 0; i < numOfTask; i++) {
+                    System.out.println((i + 1) + ". " + tasks[i]);
+                }
+            } else {
+                // Add task into tasks array
+                tasks[numOfTask] = input;
+
+                // Increment number of tasks
+                numOfTask++;
+
+                // Print message to console
+                System.out.println("added: " + input);
+            }
         }
 
         // Close the scanner
