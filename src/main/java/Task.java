@@ -19,6 +19,7 @@ public class Task {
         return (isDone ? "[X] " : "[ ] "); // mark done task with X
     }
 
+    // To be overridden by child classes
     public String toString() {
         return getStatusIcon() + " " + description;
     }

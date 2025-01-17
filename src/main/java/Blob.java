@@ -59,16 +59,42 @@ public class Blob {
                     System.out.println("  " + tasks[ind]);
                 }
 
-            } else {
-                Task task = new Task(input);
+            } else if (command.startsWith("todo")) {
+                // Get the description
+                ToDo todo = new ToDo(segment[1]);
 
-                // Add task into tasks array
-                tasks[numOfTask] = task;
+                // Add into tasks array
+                tasks[numOfTask] = todo;
 
                 // Increment number of tasks
                 numOfTask++;
                 // Print message to console
-                System.out.println("added: " + input);
+                System.out.println("Got it. I've added this task:\n  "
+                        + todo + "\nNow you have " + numOfTask + " tasks in the list.");
+            } else if (command.startsWith("deadline")) {
+                // Split the remaining input into [deadline description, by when]
+                String[] deadlineSegments = segment[1].split(" /by ", 2);
+                Deadline deadline = new Deadline(deadlineSegments[0], deadlineSegments[1]);
+
+                // Add deadline into tasks array
+                tasks[numOfTask] = deadline;
+                // Increment number of tasks
+                numOfTask++;
+                // Print message to console
+                System.out.println("Got it. I've added this task:\n  "
+                        + deadline + "\nNow you have " + numOfTask + " tasks in the list.");
+            } else if (command.startsWith("event")) {
+                // Split the remaining input into [event description, from, to]
+                String[] eventSegments = segment[1].split(" /from | /to ", 3);
+                Event event = new Event(eventSegments[0], eventSegments[1], eventSegments[2]);
+
+                // Add event into tasks array
+                tasks[numOfTask] = event;
+                // Increment number of tasks
+                numOfTask++;
+                // Print message to console
+                System.out.println("Got it. I've added this task:\n  "
+                        + event + "\nNow you have " + numOfTask + " tasks in the list.");
             }
         }
 
