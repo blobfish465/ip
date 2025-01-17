@@ -11,5 +11,8 @@ deadline submit report /by Friday
 deadline prepare presentation
 event team meeting /from Monday 10am /to 12pm
 event team outing /from Friday 6pm
+list
+delete 5
+delete 4
 blah
 bye
