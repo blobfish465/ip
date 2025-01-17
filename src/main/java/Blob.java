@@ -96,6 +96,7 @@ public class Blob {
                 System.out.println("Got it. I've added this task:\n  "
                         + event + "\nNow you have " + numOfTask + " tasks in the list.");
             }
+            System.out.println("\n");
         }
 
         // Close the scanner
