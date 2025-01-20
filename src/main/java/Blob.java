@@ -1,7 +1,51 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Blob {
+
+    private static final String FILE_PATH = "./data/Blob.txt";
+
+    private static ArrayList<Task> loadTasks() {
+        ArrayList<Task> tasks = new ArrayList<>();
+        File file = new File(FILE_PATH);
+        // Returns empty array list if file does not exist
+        if (!file.exists()) {
+            // System.out.println("File does not exist");
+            return tasks;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Call the parse method in Task class
+                Task task = Task.parse(line);
+                tasks.add(task);
+            }
+        } catch (IOException e) {
+            System.out.println("Error loading tasks: " + e.getMessage());
+        }
+        return tasks;
+    }
+
+    private static void saveTasks(ArrayList<Task> tasks) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (Task task : tasks) {
+                // Call the toFileFormat method in Task class, which
+                // Converts the task into a string format for file storage
+                // Format e.g E | 0 | project meeting | Aug 6th 2-4pm
+                writer.write(task.toFileFormat() + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving tasks: " + e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
         String greeting = "Hello! I'm Blob\n"
                 + "What can I do for you?\n";
@@ -14,8 +58,8 @@ public class Blob {
         // Create a new Scanner for user input
         Scanner scanner = new Scanner(System.in);
 
-        // Using ArrayList to store tasks
-        ArrayList<Task> tasks = new ArrayList<>();
+        // Using ArrayList to store tasks, Load Tasks from data file
+        ArrayList<Task> tasks = loadTasks();
 
         while (true) {
             String input = scanner.nextLine().trim();
@@ -28,6 +72,8 @@ public class Blob {
             try {
                 switch (command) {
                     case "bye":
+                        // Save tasks to file
+                        saveTasks(tasks);
                         // Print farewell message
                         System.out.println(farewell);
                         scanner.close();
@@ -54,10 +100,14 @@ public class Blob {
                         if (command.equals("mark")) {
                             Task task = tasks.get(ind);
                             task.markDone();
+                            // Save changes to file
+                            saveTasks(tasks);
                             System.out.println("Nice! I've marked this task as done:\n  " + task);
                         } else {
                             Task task = tasks.get(ind);
                             task.unmarkDone();
+                            // Save changes to file
+                            saveTasks(tasks);
                             System.out.println("OK, I've marked this task as not done yet:\n  " + task);
                         }
                         break;
@@ -66,6 +116,8 @@ public class Blob {
                         if (segment.length < 2 || segment[1].isEmpty())
                             throw new BlobExceptions.EmptyDescriptionException();
                         tasks.add(new ToDo(segment[1]));
+                        // Save changes to file
+                        saveTasks(tasks);
                         // Print message to console
                         System.out.println("Got it. I've added this task:\n  "
                                 + tasks.get(tasks.size() - 1) + "\nNow you have " + tasks.size() + " tasks in the list.");
@@ -79,6 +131,8 @@ public class Blob {
                         Deadline deadline = new Deadline(deadlineSegments[0], deadlineSegments[1]);
 
                         tasks.add(deadline);
+                        // Save changes to file
+                        saveTasks(tasks);
                         // Print message to console
                         System.out.println("Got it. I've added this task:\n  "
                                 + deadline + "\nNow you have " + tasks.size() + " tasks in the list.");
@@ -93,6 +147,8 @@ public class Blob {
 
                         // Add event into tasks array list
                         tasks.add(event);
+                        // Save changes to file
+                        saveTasks(tasks);
                         // Print message to console
                         System.out.println("Got it. I've added this task:\n  "
                                 + event + "\nNow you have " + tasks.size() + " tasks in the list.");
@@ -104,6 +160,8 @@ public class Blob {
                         int deleteIndex = Integer.parseInt(segment[1]) - 1;
                         if (deleteIndex < 0 || deleteIndex >= tasks.size()) throw new BlobExceptions.WrongTaskIndexException();
                         Task removedTask = tasks.remove(deleteIndex);
+                        // Save changes to file
+                        saveTasks(tasks);
                         System.out.println("Noted. I've removed this task:\n  " + removedTask);
                         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
                         break;
