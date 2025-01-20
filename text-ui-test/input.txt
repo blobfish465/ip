@@ -7,10 +7,11 @@ mark 2
 unmark 3
 mark 0
 todo clean house
-deadline submit report /by Friday
 deadline prepare presentation
-event team meeting /from Monday 10am /to 12pm
-event team outing /from Friday 6pm
+deadline prepare presentation /by 2025-03-05
+deadline submit report /by 2025-03-01 1700
+event team meeting /from 2025-03-01 1700
+event team meeting /from 2025-03-01 1700 /to 2025-03-01 2000
 list
 delete 5
 delete 4
