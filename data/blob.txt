@@ -1,3 +1,3 @@
-T | 1 | read book
-D | 0 | submit report | Friday
-E | 0 | team meeting | Monday 10am | 12pm
+D | 0 | submit report | 2025-03-01 1700
+E | 0 | team meeting | 2025-03-01 1700 | 2025-03-01 2000
+T | 0 | list
