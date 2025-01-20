@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
@@ -25,17 +25,16 @@ public class Task {
     }
 
     // Converts the task into a string format for file storage
-    public String toFileFormat() {
-        return (this instanceof ToDo ? "T" :
-                this instanceof Deadline ? "D" :
-                        this instanceof Event ? "E" : "U") +
-                " | " + (isDone ? 1 : 0) +
-                " | " + description;
-    }
+    public abstract String toFileFormat();
 
     // Parses a string to create a specific Task object
     public static Task parse(String line) {
         String[] parts = line.split(" \\| ");
+        if (parts.length < 3) {
+            System.out.println("Skipping invalid or incomplete line: " + line);
+            return null;
+        }
+        // Ensure there is 3 parts: Type, isDone Description
         String type = parts[0].trim();
         boolean isDone = parts[1].trim().equals("1");
         String description = parts[2].trim();
@@ -50,6 +49,7 @@ public class Task {
                 task = new Deadline(description, time);
                 break;
             case "E":
+                if (parts.length < 5) return null;
                 String startTime = parts[3].trim();
                 String endTime = parts[4].trim();
                 task = new Event(description, startTime, endTime);
