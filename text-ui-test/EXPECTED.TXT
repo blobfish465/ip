@@ -1,77 +1,43 @@
 Hello! I'm Blob
 What can I do for you?
-
-Oh no! The description of a task cannot be empty.
-Add a space and a description after your command
-
-Your task list has no task! Add some tasks to it!
-
-Error saving tasks: ./data/Blob.txt (No such file or directory)
-Got it. I've added this task:
+Enter command: Error: Usage: todo <description>
+Enter command: Here are the tasks in your list:
+Enter command: Got it. I've added this task:
   [T][ ]  read book
 Now you have 1 tasks in the list.
-
-Here are the tasks in your list:
+Enter command: Here are the tasks in your list:
 1. [T][ ]  read book
-
-Error saving tasks: ./data/Blob.txt (No such file or directory)
-Nice! I've marked this task as done:
-  [T][X]  read book
-
-The task number you provided is out of bounds!
-Use the list command to check your desired the task index.
-
-The task number you provided is out of bounds!
-Use the list command to check your desired the task index.
-
-The task number you provided is out of bounds!
-Use the list command to check your desired the task index.
-
-Error saving tasks: ./data/Blob.txt (No such file or directory)
-Got it. I've added this task:
+Enter command: Error: Error: Index -1 out of bounds for length 1
+Enter command: Error: Error: Index 1 out of bounds for length 1
+Enter command: Error: Error: Index 2 out of bounds for length 1
+Enter command: Error: Error: Index -1 out of bounds for length 1
+Enter command: Got it. I've added this task:
   [T][ ]  clean house
 Now you have 2 tasks in the list.
-
-Wrong format! Please follow this format:
-  deadline <description> /by <yyyy-MM-dd> HHmm
-
-Error parsing datetime: 2025-03-05. Use yyyy-MM-dd HHmm format.
-Error saving tasks: ./data/Blob.txt (No such file or directory)
+Enter command: Error: Usage: deadline <description> /by <date time>
+Enter command: Error parsing datetime: 2025-03-05. Use yyyy-MM-dd HHmm format.
 Got it. I've added this task:
   [D][ ]  prepare presentation (by: Invalid date)
 Now you have 3 tasks in the list.
-
-Error saving tasks: ./data/Blob.txt (No such file or directory)
-Got it. I've added this task:
+Enter command: Got it. I've added this task:
   [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
 Now you have 4 tasks in the list.
-
-Wrong format! Please follow this format:
-  event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>
-
-Error saving tasks: ./data/Blob.txt (No such file or directory)
-Got it. I've added this task:
+Enter command: Error: Usage: event <description> /from <start time> /to <end time>
+Enter command: Got it. I've added this task:
   [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
 Now you have 5 tasks in the list.
-
-Here are the tasks in your list:
+Enter command: Here are the tasks in your list:
 1. [T][X]  read book
 2. [T][ ]  clean house
 3. [D][ ]  prepare presentation (by: Invalid date)
 4. [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
 5. [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
-
-Error saving tasks: ./data/Blob.txt (No such file or directory)
-Noted. I've removed this task:
+Enter command: Noted. I've removed this task:
   [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
 Now you have 4 tasks in the list.
-
-Error saving tasks: ./data/Blob.txt (No such file or directory)
-Noted. I've removed this task:
+Enter command: Noted. I've removed this task:
   [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
 Now you have 3 tasks in the list.
-
-What are you saying? i don't know what you mean. Enter a valid command.
-
-Error saving tasks: ./data/Blob.txt (No such file or directory)
-Bye. Hope to see you again soon!
+Enter command: Error: Unknown command. Please try again.
+Enter command: Error: Error: data/Blob.txt (No such file or directory)
+Enter command:
