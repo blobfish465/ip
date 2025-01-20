@@ -72,7 +72,7 @@ public class Blob {
             try {
                 switch (command) {
                     case "bye":
-                        // Save tasks to blob.txt file
+                        // Save tasks to file
                         saveTasks(tasks);
                         // Print farewell message
                         System.out.println(farewell);
@@ -100,7 +100,7 @@ public class Blob {
                         if (command.equals("mark")) {
                             Task task = tasks.get(ind);
                             task.markDone();
-                            // Save changes to blob.txt file
+                            // Save changes to file
                             saveTasks(tasks);
                             System.out.println("Nice! I've marked this task as done:\n  " + task);
                         } else {
@@ -116,7 +116,7 @@ public class Blob {
                         if (segment.length < 2 || segment[1].isEmpty())
                             throw new BlobExceptions.EmptyDescriptionException();
                         tasks.add(new ToDo(segment[1]));
-                        // Save changes to blob.txt file
+                        // Save changes to file
                         saveTasks(tasks);
                         // Print message to console
                         System.out.println("Got it. I've added this task:\n  "
@@ -125,16 +125,13 @@ public class Blob {
 
                     case "deadline":
                         if (segment.length < 2 || !segment[1].contains(" /by "))
-                            throw new BlobExceptions.IllegalFormatException("deadline <description> /by <yyyy-MM-dd> HHmm");
+                            throw new BlobExceptions.IllegalFormatException("deadline <description> /by <time>");
                         // Split the remaining input into [deadline description, by when]
                         String[] deadlineSegments = segment[1].split(" /by ", 2);
-                        if (deadlineSegments.length < 2) {
-                            throw new BlobExceptions.IllegalFormatException("deadline <description> /by <yyyy-MM-dd HHmm>");
-                        }
-                        Deadline deadline = new Deadline(deadlineSegments[0].trim(), deadlineSegments[1].trim());
+                        Deadline deadline = new Deadline(deadlineSegments[0], deadlineSegments[1]);
 
                         tasks.add(deadline);
-                        // Save changes to blob.txt file
+                        // Save changes to file
                         saveTasks(tasks);
                         // Print message to console
                         System.out.println("Got it. I've added this task:\n  "
@@ -142,19 +139,15 @@ public class Blob {
                         break;
 
                     case "event":
-                        // Input format: event team meeting /from 2023-03-01 1000 /to 2023-03-01 1200
                         if (segment.length < 2 || !segment[1].contains(" /from ") || !segment[1].contains(" /to "))
-                            throw new BlobExceptions.IllegalFormatException("event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>");
+                            throw new BlobExceptions.IllegalFormatException("event <description> /from <start time> /to <end time>");
                         // Split the remaining input into [event description, from, to]
                         String[] eventSegments = segment[1].split(" /from | /to ", 3);
-                        if (eventSegments.length < 3) {
-                            throw new BlobExceptions.IllegalFormatException("event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>");
-                        }
-                        Event event = new Event(eventSegments[0].trim(), eventSegments[1].trim(), eventSegments[2].trim());
+                        Event event = new Event(eventSegments[0], eventSegments[1], eventSegments[2]);
 
                         // Add event into tasks array list
                         tasks.add(event);
-                        // Save changes to blob.txt file
+                        // Save changes to file
                         saveTasks(tasks);
                         // Print message to console
                         System.out.println("Got it. I've added this task:\n  "
@@ -167,7 +160,7 @@ public class Blob {
                         int deleteIndex = Integer.parseInt(segment[1]) - 1;
                         if (deleteIndex < 0 || deleteIndex >= tasks.size()) throw new BlobExceptions.WrongTaskIndexException();
                         Task removedTask = tasks.remove(deleteIndex);
-                        // Save changes to blob.txt file
+                        // Save changes to file
                         saveTasks(tasks);
                         System.out.println("Noted. I've removed this task:\n  " + removedTask);
                         System.out.println("Now you have " + tasks.size() + " tasks in the list.");
