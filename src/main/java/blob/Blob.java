@@ -49,7 +49,7 @@ public class Blob {
     }
 
     public static void main(String[] args) {
-        new Blob("data/blob.Blob.txt").run();
+        new Blob("data/Blob.txt").run();
     }
 }
 
