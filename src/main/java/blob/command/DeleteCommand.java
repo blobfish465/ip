@@ -1,3 +1,10 @@
+package blob.command;
+
+import blob.ui.Ui;
+import blob.TaskList;
+import blob.storage.Storage;
+import blob.model.Task;
+
 public class DeleteCommand implements Command {
     private int index;
 

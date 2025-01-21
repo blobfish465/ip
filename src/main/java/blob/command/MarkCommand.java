@@ -1,3 +1,10 @@
+package blob.command;
+
+import blob.model.Task;
+import blob.storage.Storage;
+import blob.ui.Ui;
+import blob.TaskList;
+
 public class MarkCommand implements Command {
     private int index;
 

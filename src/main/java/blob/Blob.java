@@ -1,4 +1,12 @@
+package blob;
+
+import blob.storage.Storage;
+import blob.ui.Ui;
+import blob.parser.Parser;
+import blob.command.Command;
+import blob.exception.*;
 import java.io.IOException;
+
 
 public class Blob {
     private Storage storage;
@@ -35,12 +43,13 @@ public class Blob {
             } catch (Exception e) {
                 ui.showError("An unexpected error occurred: " + e.getMessage());
             }
+
         }
         ui.closeScanner();
     }
 
     public static void main(String[] args) {
-        new Blob("data/Blob.txt").run();
+        new Blob("data/blob.Blob.txt").run();
     }
 }
 

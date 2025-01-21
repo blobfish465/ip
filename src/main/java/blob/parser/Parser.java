@@ -1,3 +1,17 @@
+package blob.parser;
+
+import blob.command.AddCommand;
+import blob.command.Command;
+import blob.command.DeleteCommand;
+import blob.command.ExitCommand;
+import blob.command.ListCommand;
+import blob.command.MarkCommand;
+import blob.command.UnmarkCommand;
+import blob.exception.BlobExceptions;
+import blob.model.Deadline;
+import blob.model.Event;
+import blob.model.ToDo;
+
 public class Parser {
     public Command parse(String input) throws BlobExceptions.UnknownCommandException, BlobExceptions.EmptyDescriptionException, BlobExceptions.IllegalFormatException, BlobExceptions.WrongTaskIndexException {
         String[] segments = input.split(" ", 2);
@@ -9,7 +23,7 @@ public class Parser {
                 return new ExitCommand();
             case "list":
                 if (!arguments.isEmpty()) {
-                    throw new BlobExceptions.IllegalFormatException("The 'list' command does not take any arguments.");
+                    throw new BlobExceptions.IllegalFormatException("The 'list' blob.command does not take any arguments.");
                 }
                 return new ListCommand();
             case "mark":

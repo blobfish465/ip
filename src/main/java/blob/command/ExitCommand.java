@@ -1,3 +1,9 @@
+package blob.command;
+
+import blob.storage.Storage;
+import blob.ui.Ui;
+import blob.TaskList;
+
 import java.io.IOException;
 public class ExitCommand implements Command {
     @Override

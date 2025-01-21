@@ -1,43 +1,77 @@
-Hello! I'm Blob
+Error parsing datetime: undefined. Use yyyy-MM-dd HHmm format.
+Hello! I'm blob.Blob
 What can I do for you?
-Enter command: Error: Usage: todo <description>
-Enter command: Here are the tasks in your list:
-Enter command: Got it. I've added this task:
+Enter blob.command: Error: Oh no! The description of a task cannot be empty.
+Add a space and a description after your blob.command
+Enter blob.command: Here are the tasks in your list:
+1. [T][X]  clean house
+2. [D][X]  submit report (by: Mar 1 2025, 5:00 PM)
+3. [T][ ]  read book
+4. [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
+5. [T][ ]  read book
+6. [T][ ]  clean house
+7. [D][ ]  prepare presentation (by: Invalid date)
+8. [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
+9. [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
+Enter blob.command: Got it. I've added this task:
   [T][ ]  read book
-Now you have 1 tasks in the list.
-Enter command: Here are the tasks in your list:
-1. [T][ ]  read book
-Enter command: Error: Error: Index -1 out of bounds for length 1
-Enter command: Error: Error: Index 1 out of bounds for length 1
-Enter command: Error: Error: Index 2 out of bounds for length 1
-Enter command: Error: Error: Index -1 out of bounds for length 1
-Enter command: Got it. I've added this task:
+Now you have 10 tasks in the list.
+Enter blob.command: Here are the tasks in your list:
+1. [T][X]  clean house
+2. [D][X]  submit report (by: Mar 1 2025, 5:00 PM)
+3. [T][ ]  read book
+4. [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
+5. [T][ ]  read book
+6. [T][ ]  clean house
+7. [D][ ]  prepare presentation (by: Invalid date)
+8. [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
+9. [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
+10. [T][ ]  read book
+Enter blob.command: Nice! I've marked this task as done:
+  [T][X]  clean house
+Enter blob.command: Nice! I've marked this task as done:
+  [D][X]  submit report (by: Mar 1 2025, 5:00 PM)
+Enter blob.command: OK, I've marked this task as not done yet:
+  [T][ ]  read book
+Enter blob.command: Error: An unexpected error occurred: Index -1 out of bounds for length 10
+Enter blob.command: Got it. I've added this task:
   [T][ ]  clean house
-Now you have 2 tasks in the list.
-Enter command: Error: Usage: deadline <description> /by <date time>
-Enter command: Error parsing datetime: 2025-03-05. Use yyyy-MM-dd HHmm format.
+Now you have 11 tasks in the list.
+Enter blob.command: Error: Wrong format! Please follow this format:
+  Usage: deadline <description> /by <yyyy-MM-dd HHmm>
+Enter blob.command: Error parsing datetime: 2025-03-05. Use yyyy-MM-dd HHmm format.
 Got it. I've added this task:
   [D][ ]  prepare presentation (by: Invalid date)
-Now you have 3 tasks in the list.
-Enter command: Got it. I've added this task:
+Now you have 12 tasks in the list.
+Enter blob.command: Got it. I've added this task:
   [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
-Now you have 4 tasks in the list.
-Enter command: Error: Usage: event <description> /from <start time> /to <end time>
-Enter command: Got it. I've added this task:
+Now you have 13 tasks in the list.
+Enter blob.command: Error: Wrong format! Please follow this format:
+  event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>
+Enter blob.command: Got it. I've added this task:
   [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
-Now you have 5 tasks in the list.
-Enter command: Here are the tasks in your list:
-1. [T][X]  read book
-2. [T][ ]  clean house
-3. [D][ ]  prepare presentation (by: Invalid date)
-4. [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
-5. [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
-Enter command: Noted. I've removed this task:
+Now you have 14 tasks in the list.
+Enter blob.command: Here are the tasks in your list:
+1. [T][X]  clean house
+2. [D][X]  submit report (by: Mar 1 2025, 5:00 PM)
+3. [T][ ]  read book
+4. [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
+5. [T][ ]  read book
+6. [T][ ]  clean house
+7. [D][ ]  prepare presentation (by: Invalid date)
+8. [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
+9. [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
+10. [T][ ]  read book
+11. [T][ ]  clean house
+12. [D][ ]  prepare presentation (by: Invalid date)
+13. [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
+14. [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
+Enter blob.command: Noted. I've removed this task:
+  [T][ ]  read book
+Now you have 13 tasks in the list.
+Enter blob.command: Noted. I've removed this task:
   [E][ ]  team meeting (from: Mar 1 2025, 5:00 PM to: Mar 1 2025, 8:00 PM)
-Now you have 4 tasks in the list.
-Enter command: Noted. I've removed this task:
-  [D][ ]  submit report (by: Mar 1 2025, 5:00 PM)
-Now you have 3 tasks in the list.
-Enter command: Error: Unknown command. Please try again.
-Enter command: Error: Error: data/Blob.txt (No such file or directory)
-Enter command:
+Now you have 12 tasks in the list.
+Enter blob.command: Error: What are you saying? i don't know what you mean. Enter a valid blob.command.
+Enter blob.command: Bye. Hope to see you again soon!
+

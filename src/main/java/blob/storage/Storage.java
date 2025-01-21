@@ -1,3 +1,7 @@
+package blob.storage;
+
+import blob.model.Task;
+
 import java.io.*;
 import java.util.ArrayList;
 

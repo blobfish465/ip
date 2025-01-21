@@ -1,3 +1,5 @@
+package blob.model;
+
 public abstract class Task {
     protected String description;
     protected boolean isDone;
@@ -27,7 +29,7 @@ public abstract class Task {
     // Converts the task into a string format for file storage
     public abstract String toFileFormat();
 
-    // Parses a string to create a specific Task object
+    // Parses a string to create a specific blob.model.Task object
     public static Task parse(String line) {
         String[] parts = line.split(" \\| ");
         if (parts.length < 3) {

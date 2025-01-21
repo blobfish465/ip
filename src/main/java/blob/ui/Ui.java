@@ -1,5 +1,9 @@
+package blob.ui;
+
 import java.util.Scanner;
 import java.util.List;
+import blob.model.Task;
+import blob.TaskList;
 
 public class Ui {
     private Scanner scanner;
@@ -14,7 +18,7 @@ public class Ui {
     }
 
     public void showGreeting() {
-        System.out.println("Hello! I'm Blob\nWhat can I do for you?");
+        System.out.println("Hello! I'm blob.Blob\nWhat can I do for you?");
     }
 
     public void showFarewell() {
