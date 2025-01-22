@@ -6,14 +6,11 @@ import blob.TaskList;
 
 import java.io.IOException;
 
-<<<<<<< HEAD
 /**
  * Represents a command to terminate the application.
  * This command handles the process of exiting the program after saving all tasks
  * to the designated storage.
  */
-=======
->>>>>>> branch-A-CodingStandard
 public class ExitCommand implements Command {
 
     /**

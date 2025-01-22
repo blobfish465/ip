@@ -42,20 +42,18 @@ public abstract class Task {
         return (isDone ? "[X] " : "[ ] ");
     }
 
-<<<<<<< HEAD
+
     /**
      * Returns a string representation of the task, including its status icon and description.
      * This method must be overridden in subclasses to provide specific details about the task type.
      *
      * @return A string representing the task, including its status and description.
      */
-=======
->>>>>>> branch-A-CodingStandard
     public String toString() {
         return getStatusIcon() + " " + description;
     }
 
-<<<<<<< HEAD
+
     /**
      * Converts the task into a string format suitable for file storage.
      * This method must be implemented by subclasses to adapt to their specific storage format.
@@ -71,10 +69,6 @@ public abstract class Task {
      * @param line A string representing the task in a file storage format.
      * @return A Task object corresponding to the provided string, or null if the string is invalid.
      */
-=======
-    public abstract String toFileFormat();
-
->>>>>>> branch-A-CodingStandard
     public static Task parse(String line) {
         String[] parts = line.split(" \\| ");
         if (parts.length < 3) {

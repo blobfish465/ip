@@ -4,13 +4,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-<<<<<<< HEAD
 /**
  * Represents a task that occurs over a specified time period, with both start and end times.
  * This class extends the generic Task class by adding support for start and end times, making it suitable for events.
  */
-=======
->>>>>>> branch-A-CodingStandard
 public class Event extends Task {
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
