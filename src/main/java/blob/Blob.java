@@ -1,18 +1,19 @@
 package blob;
 
+import blob.command.Command;
+import blob.exception.BlobExceptions;
+import blob.parser.Parser;
 import blob.storage.Storage;
 import blob.ui.Ui;
-import blob.parser.Parser;
-import blob.command.Command;
-import blob.exception.*;
+
 import java.io.IOException;
 
-
 public class Blob {
-    private Storage storage;
+    private final Storage storage;
     private TaskList tasks;
-    private Ui ui;
-    private Parser parser;
+    private final Ui ui;
+    private final Parser parser;
+
     public Blob(String filePath) {
         ui = new Ui();
         parser = new Parser();
@@ -36,7 +37,9 @@ public class Blob {
                 if (command.isExitCommand()) {
                     isRunning = false;
                 }
-            } catch (BlobExceptions.EmptyDescriptionException | BlobExceptions.UnknownCommandException | BlobExceptions.IllegalFormatException | BlobExceptions.WrongTaskIndexException | BlobExceptions.NoTaskException e) {
+            } catch (BlobExceptions.EmptyDescriptionException | BlobExceptions.UnknownCommandException |
+                     BlobExceptions.IllegalFormatException | BlobExceptions.WrongTaskIndexException |
+                     BlobExceptions.NoTaskException e) {
                 ui.showError(e.getMessage());
             } catch (IOException e) {
                 ui.showError("File I/O error: " + e.getMessage());

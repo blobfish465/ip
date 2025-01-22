@@ -1,9 +1,9 @@
 package blob.command;
 
+import blob.model.Task;
 import blob.storage.Storage;
 import blob.ui.Ui;
 import blob.TaskList;
-import blob.model.Task;
 
 public class AddCommand implements Command {
     private Task task;

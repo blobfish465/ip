@@ -27,14 +27,6 @@ public class TaskList {
         return tasks.remove(index - 1);
     }
 
-    public void markTask(int index) {
-        tasks.get(index - 1).markDone();
-    }
-
-    public void unmarkTask(int index) {
-        tasks.get(index - 1).unmarkDone();
-    }
-
     public Task getTask(int index) {
         return tasks.get(index - 1);
     }

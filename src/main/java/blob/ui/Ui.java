@@ -1,12 +1,13 @@
 package blob.ui;
 
-import java.util.Scanner;
 import java.util.List;
+import java.util.Scanner;
+
 import blob.model.Task;
 import blob.TaskList;
 
 public class Ui {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public Ui() {
         this.scanner = new Scanner(System.in);

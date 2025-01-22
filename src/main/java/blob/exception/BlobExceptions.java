@@ -5,20 +5,20 @@ public class BlobExceptions {
     public static class EmptyDescriptionException extends Exception {
         public EmptyDescriptionException() {
             super("Oh no! The description of a task cannot be empty.\n"
-                    + "Add a space and a description after your blob.command");
+                    + "Add a space and a description after your command");
         }
     }
 
     public static class UnknownCommandException extends Exception {
         public UnknownCommandException() {
-            super("What are you saying? i don't know what you mean. Enter a valid blob.command.");
+            super("What are you saying? I don't know what you mean. Enter a valid command.");
         }
     }
 
     public static class WrongTaskIndexException extends Exception {
         public WrongTaskIndexException() {
             super("The task number you provided is out of bounds!\n"
-            + "Use the list blob.command to check your desired the task index.");
+                    + "Use the list command to check your desired the task index.");
         }
     }
 
