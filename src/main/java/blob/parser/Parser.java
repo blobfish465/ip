@@ -12,7 +12,23 @@ import blob.model.Deadline;
 import blob.model.Event;
 import blob.model.ToDo;
 
+/**
+ * Parses user input into specific command objects that can be executed by the application.
+ * This class translates string input into actionable commands by identifying keywords
+ * and necessary parameters to construct command instances.
+ */
 public class Parser {
+
+    /**
+     * Parses the input string to determine which type of command to create and execute.
+     *
+     * @param input The full string input by the user.
+     * @return Command The specific command object that corresponds to the user input.
+     * @throws BlobExceptions.UnknownCommandException If the command type is not recognized.
+     * @throws BlobExceptions.EmptyDescriptionException If the command requires a description which is not provided.
+     * @throws BlobExceptions.IllegalFormatException If the input does not match the expected format for the command.
+     * @throws BlobExceptions.WrongTaskIndexException If the command includes an index that is not a valid integer or out of bounds.
+     */
     public Command parse(String input) throws BlobExceptions.UnknownCommandException, BlobExceptions.EmptyDescriptionException, BlobExceptions.IllegalFormatException, BlobExceptions.WrongTaskIndexException {
         String[] segments = input.split(" ", 2);
         String commandType = segments[0];
@@ -23,7 +39,7 @@ public class Parser {
                 return new ExitCommand();
             case "list":
                 if (!arguments.isEmpty()) {
-                    throw new BlobExceptions.IllegalFormatException("The 'list' blob.command does not take any arguments.");
+                    throw new BlobExceptions.IllegalFormatException("The 'list' command does not take any arguments.");
                 }
                 return new ListCommand();
             case "mark":

@@ -7,12 +7,21 @@ import blob.command.Command;
 import blob.exception.*;
 import java.io.IOException;
 
-
+/**
+ * Main class of the Blob application.
+ * Initializes and coordinates the various components of the application such as UI, storage, and command parsing.
+ */
 public class Blob {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
     private Parser parser;
+
+    /**
+     * Constructs the main application object, setting up storage, UI, and parser components.
+     *
+     * @param filePath The path to the file where tasks are stored and loaded from.
+     */
     public Blob(String filePath) {
         ui = new Ui();
         parser = new Parser();
@@ -25,6 +34,9 @@ public class Blob {
         }
     }
 
+    /**
+     * Runs the main loop of the application, processing user commands until the exit command is received.
+     */
     public void run() {
         ui.showGreeting();
         boolean isRunning = true;
@@ -48,6 +60,11 @@ public class Blob {
         ui.closeScanner();
     }
 
+    /**
+     * The entry point of the application.
+     *
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
         new Blob("data/Blob.txt").run();
     }
