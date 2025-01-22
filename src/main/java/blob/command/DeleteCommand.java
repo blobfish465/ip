@@ -1,9 +1,9 @@
 package blob.command;
 
+import blob.model.Task;
+import blob.storage.Storage;
 import blob.ui.Ui;
 import blob.TaskList;
-import blob.storage.Storage;
-import blob.model.Task;
 
 /**
  * Represents a command to delete a task from the task list.

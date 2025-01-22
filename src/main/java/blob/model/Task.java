@@ -39,19 +39,23 @@ public abstract class Task {
      * @return A string representing the task's completion status ("[X] " for done, "[ ] " for not done).
      */
     public String getStatusIcon() {
-        return (isDone ? "[X] " : "[ ] "); // mark done task with X
+        return (isDone ? "[X] " : "[ ] ");
     }
 
+<<<<<<< HEAD
     /**
      * Returns a string representation of the task, including its status icon and description.
      * This method must be overridden in subclasses to provide specific details about the task type.
      *
      * @return A string representing the task, including its status and description.
      */
+=======
+>>>>>>> branch-A-CodingStandard
     public String toString() {
         return getStatusIcon() + " " + description;
     }
 
+<<<<<<< HEAD
     /**
      * Converts the task into a string format suitable for file storage.
      * This method must be implemented by subclasses to adapt to their specific storage format.
@@ -67,32 +71,38 @@ public abstract class Task {
      * @param line A string representing the task in a file storage format.
      * @return A Task object corresponding to the provided string, or null if the string is invalid.
      */
+=======
+    public abstract String toFileFormat();
+
+>>>>>>> branch-A-CodingStandard
     public static Task parse(String line) {
         String[] parts = line.split(" \\| ");
         if (parts.length < 3) {
             System.out.println("Skipping invalid or incomplete line: " + line);
             return null;
         }
-        // Ensure there is 3 parts: Type, isDone Description
+
         String type = parts[0].trim();
         boolean isDone = parts[1].trim().equals("1");
         String description = parts[2].trim();
         Task task = null;
 
         switch (type) {
-            case "T":
-                task = new ToDo(description);
-                break;
-            case "D":
-                String time = parts[3].trim();
-                task = new Deadline(description, time);
-                break;
-            case "E":
-                if (parts.length < 5) return null;
-                String startTime = parts[3].trim();
-                String endTime = parts[4].trim();
-                task = new Event(description, startTime, endTime);
-                break;
+        case "T":
+            task = new ToDo(description);
+            break;
+        case "D":
+            String time = parts[3].trim();
+            task = new Deadline(description, time);
+            break;
+        case "E":
+            if (parts.length < 5) return null;
+            String startTime = parts[3].trim();
+            String endTime = parts[4].trim();
+            task = new Event(description, startTime, endTime);
+            break;
+        default:
+            System.out.println("Unknown task type: " + type);
         }
 
         if (task != null && isDone) {

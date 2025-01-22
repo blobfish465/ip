@@ -2,7 +2,12 @@ package blob.storage;
 
 import blob.model.Task;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +15,7 @@ import java.util.ArrayList;
  * and saved to a file.
  */
 public class Storage {
-    private String filePath;
+    private final String filePath;
 
     /**
      * Constructs a new Storage object to manage file operations for tasks.

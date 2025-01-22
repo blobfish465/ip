@@ -10,7 +10,7 @@ import java.util.List;
  * This class manages inputs and outputs, interacting directly with the user.
  */
 public class Ui {
-    private Scanner scanner;
+    private final Scanner scanner;
 
     /**
      * Constructs a new UI object, initializing the scanner to read user input.

@@ -1,9 +1,13 @@
 package blob.parser;
 
-import blob.command.Command;
 import blob.command.AddCommand;
+import blob.command.Command;
 import blob.exception.BlobExceptions;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 /**
