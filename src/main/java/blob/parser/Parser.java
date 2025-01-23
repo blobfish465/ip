@@ -4,6 +4,7 @@ import blob.command.AddCommand;
 import blob.command.Command;
 import blob.command.DeleteCommand;
 import blob.command.ExitCommand;
+import blob.command.FindCommand;
 import blob.command.ListCommand;
 import blob.command.MarkCommand;
 import blob.command.UnmarkCommand;
@@ -94,6 +95,11 @@ public class Parser {
             } catch (NumberFormatException e) {
                 throw new BlobExceptions.WrongTaskIndexException();
             }
+        case "find":
+            if (arguments.isEmpty()) {
+                throw new BlobExceptions.IllegalFormatException("Usage: find <word>");
+            }
+            return new FindCommand(arguments);
         default:
             throw new BlobExceptions.UnknownCommandException();
         }

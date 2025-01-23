@@ -3,6 +3,7 @@ package blob;
 import blob.model.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Manages a list of tasks. Provides methods to manipulate tasks such as adding, deleting, and marking tasks.
@@ -71,6 +72,23 @@ public class TaskList {
      */
     public int getSize() {
         return tasks.size();
+    }
+
+    /**
+     * Finds tasks containing the specified word in their descriptions.
+     *
+     * @param word The keyword to search for in task descriptions.
+     * @return A list of strings representing the matching tasks with their indices.
+     */
+    public List<String> findTasks(String word) {
+        List<String> matchingTasks = new ArrayList<>();
+        for (int i = 0; i < tasks.size(); i++) {
+            Task task = tasks.get(i);
+            if (task.getDescription().contains(word)) {
+                matchingTasks.add((i + 1) + "." + task.toString());
+            }
+        }
+        return matchingTasks;
     }
 }
 
