@@ -55,6 +55,22 @@ public class Ui {
         System.out.println("OK, I've marked this task as not done yet:\n  " + task);
     }
 
+    /**
+     * Displays tasks that match the searched word to the user.
+     *
+     * @param matchingTasks A list of matching tasks to display.
+     */
+    public void showMatchingTasks(List<String> matchingTasks) {
+        if (matchingTasks.isEmpty()) {
+            System.out.println("No matching tasks found.");
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+            for (String task : matchingTasks) {
+                System.out.println(task);
+            }
+        }
+    }
+
     public void closeScanner() {
         scanner.close();
     }

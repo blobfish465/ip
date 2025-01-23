@@ -4,6 +4,7 @@ import blob.command.AddCommand;
 import blob.command.Command;
 import blob.command.DeleteCommand;
 import blob.command.ExitCommand;
+import blob.command.FindCommand;
 import blob.command.ListCommand;
 import blob.command.MarkCommand;
 import blob.command.UnmarkCommand;
@@ -57,13 +58,13 @@ public class Parser {
                 }
                 String[] deadlineParts = arguments.split(" /by ");
                 if (deadlineParts.length < 2) {
-                    throw new BlobExceptions.IllegalFormatException("deadline <description> /by <yyyy-MM-dd HHmm>");
+                    throw new BlobExceptions.IllegalFormatException("Usage: deadline <description> /by <yyyy-MM-dd HHmm>");
                 }
                 return new AddCommand(new Deadline(deadlineParts[0], deadlineParts[1]));
             case "event":
                 String[] eventParts = arguments.split(" /from | /to ");
                 if (eventParts.length < 3) {
-                    throw new BlobExceptions.IllegalFormatException("event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>");
+                    throw new BlobExceptions.IllegalFormatException("Usage: event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>");
                 }
                 return new AddCommand(new Event(eventParts[0], eventParts[1], eventParts[2]));
             case "delete":
@@ -76,6 +77,11 @@ public class Parser {
                 } catch (NumberFormatException e) {
                     throw new BlobExceptions.WrongTaskIndexException();
                 }
+            case "find":
+                if (arguments.isEmpty()) {
+                    throw new BlobExceptions.IllegalFormatException("Usage: find <word>");
+                }
+                return new FindCommand(arguments);
             default:
                 throw new BlobExceptions.UnknownCommandException();
         }
