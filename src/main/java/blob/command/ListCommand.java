@@ -1,8 +1,11 @@
 package blob.command;
 
+import blob.exception.BlobExceptions;
 import blob.storage.Storage;
 import blob.ui.Ui;
 import blob.TaskList;
+
+import java.io.IOException;
 
 /**
  * Represents a command to list all tasks in the task list.
@@ -19,8 +22,12 @@ public class ListCommand implements Command {
      * @param storage The storage component, not directly used by this command but required by the interface.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        ui.showTasks(tasks);
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws BlobExceptions.NoTaskException {
+        try {
+            ui.showTasks(tasks);
+        } catch (BlobExceptions.NoTaskException e) {
+            ui.showError(e.getMessage());
+        }
     }
 
     /**

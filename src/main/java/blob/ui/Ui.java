@@ -1,6 +1,7 @@
 package blob.ui;
 
 import blob.model.Task;
+import blob.exception.BlobExceptions;
 import blob.TaskList;
 import java.util.Scanner;
 import java.util.List;
@@ -56,12 +57,16 @@ public class Ui {
      * Displays all tasks currently in the task list.
      *
      * @param tasks The TaskList containing the tasks to be displayed.
+     * @throws BlobExceptions.NoTaskException If the command includes an index that is not a valid integer or out of bounds.
      */
-    public void showTasks(TaskList tasks) {
+    public void showTasks(TaskList tasks) throws BlobExceptions.NoTaskException {
         System.out.println("Here are the tasks in your list:");
         List<Task> list = tasks.getTasks();
         for (int i = 0; i < list.size(); i++) {
             System.out.println((i + 1) + ". " + list.get(i));
+        }
+        if (list.isEmpty()) {
+            throw new BlobExceptions.NoTaskException();
         }
     }
 

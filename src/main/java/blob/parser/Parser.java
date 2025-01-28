@@ -42,7 +42,7 @@ public class Parser {
             return new ExitCommand();
         case "list":
             if (!arguments.isEmpty()) {
-                throw new BlobExceptions.IllegalFormatException("The 'list' blob.command does not take any arguments.");
+                throw new BlobExceptions.IllegalFormatException("The 'list' command does not take any arguments.");
             }
             return new ListCommand();
         case "mark":
