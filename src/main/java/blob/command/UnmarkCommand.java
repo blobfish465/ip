@@ -1,5 +1,6 @@
 package blob.command;
 
+import blob.exception.BlobExceptions;
 import blob.model.Task;
 import blob.storage.Storage;
 import blob.ui.Ui;
@@ -29,12 +30,18 @@ public class UnmarkCommand implements Command {
      * @param tasks The task list where the task to be unmarked is stored.
      * @param ui The UI to interact with the user and show feedback.
      * @param storage The storage component, not directly used by this command but required by the interface.
+     * @throws BlobExceptions.WrongTaskIndexException If the command includes an index that is not a valid integer or out of bounds.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        Task task = tasks.getTask(index);
-        task.unmarkDone();
-        ui.showTaskUnmarked(task);
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws BlobExceptions.WrongTaskIndexException {
+        try {
+            Task task = tasks.getTask(index);
+            task.unmarkDone();
+            ui.showTaskUnmarked(task);
+        } catch (IndexOutOfBoundsException e) {
+            throw new BlobExceptions.WrongTaskIndexException();
+        }
+
     }
 
     /**

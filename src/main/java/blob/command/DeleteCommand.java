@@ -1,5 +1,6 @@
 package blob.command;
 
+import blob.exception.BlobExceptions;
 import blob.model.Task;
 import blob.storage.Storage;
 import blob.ui.Ui;
@@ -32,11 +33,16 @@ public class DeleteCommand implements Command {
      * @param storage The storage used to save the updated task list.
      *                Note that the storage may not be directly used in this method
      *                but is included to adhere to the command interface.
+     * @throws BlobExceptions.WrongTaskIndexException If the command includes an index that is not a valid integer or out of bounds.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        Task removedTask = tasks.deleteTask(index);
-        ui.showTaskDeleted(removedTask, tasks.getSize());
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws BlobExceptions.WrongTaskIndexException {
+        try {
+            Task removedTask = tasks.deleteTask(index);
+            ui.showTaskDeleted(removedTask, tasks.getSize());
+        } catch (IndexOutOfBoundsException e) {
+            throw new BlobExceptions.WrongTaskIndexException();
+        }
     }
 
     /**

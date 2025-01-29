@@ -23,11 +23,7 @@ public class ListCommand implements Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BlobExceptions.NoTaskException {
-        try {
-            ui.showTasks(tasks);
-        } catch (BlobExceptions.NoTaskException e) {
-            ui.showError(e.getMessage());
-        }
+        ui.showTasks(tasks);
     }
 
     /**
