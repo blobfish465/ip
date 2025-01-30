@@ -20,6 +20,7 @@ public class ListCommand implements Command {
      * @param tasks The task list whose contents are to be displayed.
      * @param ui The UI to interact with the user.
      * @param storage The storage component, not directly used by this command but required by the interface.
+     * @throws BlobExceptions.NoTaskException If the list does not contain any task
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws BlobExceptions.NoTaskException {
