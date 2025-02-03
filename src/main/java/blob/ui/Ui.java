@@ -11,12 +11,37 @@ import java.util.List;
  */
 public class Ui {
     private final Scanner scanner;
+    private StringBuilder output;
 
     /**
      * Constructs a new UI object, initializing the scanner to read user input.
      */
     public Ui() {
         this.scanner = new Scanner(System.in);
+        this.output = new StringBuilder();
+    }
+
+    /**
+     * Adds a message to the output buffer.
+     *
+     * @param message The message to add.
+     */
+    private void appendMessage(String message) {
+        if (output.length() > 0) {
+            output.append("\n");
+        }
+        output.append(message);
+    }
+
+    /**
+     * Retrieves and clears the current output buffer.
+     *
+     * @return The current output as a string.
+     */
+    public String getOutput() {
+        String result = output.toString();
+        output.setLength(0); // Clear the buffer
+        return result;
     }
 
     /**
@@ -33,14 +58,14 @@ public class Ui {
      * Displays a greeting message to the user when the application starts.
      */
     public void showGreeting() {
-        System.out.println("Hello! I'm Blob\nWhat can I do for you?");
+        appendMessage("Hello! I'm Blob\nWhat can I do for you?");
     }
 
     /**
      * Displays a farewell message to the user when the application terminates.
      */
     public void showFarewell() {
-        System.out.println("Bye. Hope to see you again soon!");
+        appendMessage("Bye. Hope to see you again soon!");
     }
 
     /**
@@ -49,7 +74,7 @@ public class Ui {
      * @param message The error message to be displayed.
      */
     public void showError(String message) {
-        System.out.println("Error: " + message);
+        appendMessage("Error: " + message);
     }
 
     /**
@@ -60,11 +85,11 @@ public class Ui {
     public void showTasks(TaskList tasks) {
         List<Task> list = tasks.getTasks();
         if (list.isEmpty()) {
-            System.out.println("Your task list has no task! Add some tasks to it!");
+            appendMessage("Your task list has no task! Add some tasks to it!");
         } else {
-            System.out.println("Here are the tasks in your list:");
+            appendMessage("Here are the tasks in your list:");
             for (int i = 0; i < list.size(); i++) {
-                System.out.println((i + 1) + ". " + list.get(i));
+                appendMessage((i + 1) + ". " + list.get(i));
             }
         }
     }
@@ -76,8 +101,8 @@ public class Ui {
      * @param totalTasks The total number of tasks in the list after adding the new task.
      */
     public void showTaskAdded(Task task, int totalTasks) {
-        System.out.println("Got it. I've added this task:\n  " + task);
-        System.out.println("Now you have " + totalTasks + " tasks in the list.");
+        appendMessage("Got it. I've added this task:\n  " + task);
+        appendMessage("Now you have " + totalTasks + " tasks in the list.");
     }
 
     /**
@@ -87,8 +112,8 @@ public class Ui {
      * @param totalTasks The total number of tasks in the list after removing the task.
      */
     public void showTaskDeleted(Task task, int totalTasks) {
-        System.out.println("Noted. I've removed this task:\n  " + task);
-        System.out.println("Now you have " + totalTasks + " tasks in the list.");
+        appendMessage("Noted. I've removed this task:\n  " + task);
+        appendMessage("Now you have " + totalTasks + " tasks in the list.");
     }
 
     /**
@@ -97,7 +122,7 @@ public class Ui {
      * @param task The task that was marked as done.
      */
     public void showTaskMarked(Task task) {
-        System.out.println("Nice! I've marked this task as done:\n  " + task);
+        appendMessage("Nice! I've marked this task as done:\n  " + task);
     }
 
     /**
@@ -106,7 +131,7 @@ public class Ui {
      * @param task The task that was marked as not done.
      */
     public void showTaskUnmarked(Task task) {
-        System.out.println("OK, I've marked this task as not done yet:\n  " + task);
+        appendMessage("OK, I've marked this task as not done yet:\n  " + task);
     }
 
 
@@ -117,11 +142,11 @@ public class Ui {
      */
     public void showMatchingTasks(List<String> matchingTasks) {
         if (matchingTasks.isEmpty()) {
-            System.out.println("No matching tasks found.");
+            appendMessage("No matching tasks found.");
         } else {
-            System.out.println("Here are the matching tasks in your list:");
+            appendMessage("Here are the matching tasks in your list:");
             for (String task : matchingTasks) {
-                System.out.println(task);
+                appendMessage(task);
             }
         }
     }
