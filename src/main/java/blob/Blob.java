@@ -35,6 +35,22 @@ public class Blob {
         }
     }
 
+    public String getResponse(String input) {
+        try {
+            Command command = parser.parse(input);
+            command.execute(tasks, ui, storage);
+            return ui.getOutput();
+        } catch (BlobExceptions.EmptyDescriptionException | BlobExceptions.UnknownCommandException |
+                 BlobExceptions.IllegalFormatException | BlobExceptions.WrongTaskIndexException |
+                 BlobExceptions.NoTaskException e) {
+            return "Error: " + e.getMessage();
+        } catch (IOException e) {
+            return "File I/O error: " + e.getMessage();
+        } catch (Exception e) {
+            return "An unexpected error occurred: " + e.getMessage();
+        }
+    }
+
     /**
      * Runs the main loop of the application, processing user commands until the exit command is received.
      */
@@ -42,26 +58,22 @@ public class Blob {
         ui.showGreeting();
         boolean isRunning = true;
         while (isRunning) {
+            String input = ui.readCommand();
             try {
-                String input = ui.readCommand();
                 Command command = parser.parse(input);
                 command.execute(tasks, ui, storage);
+                System.out.println(ui.getOutput());
+
                 if (command.isExitCommand()) {
                     isRunning = false;
                 }
-            } catch (BlobExceptions.EmptyDescriptionException | BlobExceptions.UnknownCommandException |
-                     BlobExceptions.IllegalFormatException | BlobExceptions.WrongTaskIndexException |
-                     BlobExceptions.NoTaskException e) {
-                ui.showError(e.getMessage());
-            } catch (IOException e) {
-                ui.showError("File I/O error: " + e.getMessage());
             } catch (Exception e) {
-                ui.showError("An unexpected error occurred: " + e.getMessage());
+                System.out.println("An unexpected error occurred: " + e.getMessage());
             }
-
         }
         ui.closeScanner();
     }
+
 
     /**
      * The entry point of the application.
