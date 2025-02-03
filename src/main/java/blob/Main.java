@@ -10,9 +10,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * A GUI for Blob using FXML.
+ * A JavaFX-based GUI for the Blob chatbot using FXML.
+ * <p>
+ * This class initializes the graphical user interface and sets up the main window.
+ * It extends {@link Application}, which is required for JavaFX applications.
+ * </p>
  */
 public class Main extends Application {
+
+    /**
+     * Starts the JavaFX application by loading the FXML layout and displaying the main window.
+     *
+     * @param stage The primary stage for this JavaFX application.
+     */
     @Override
     public void start(Stage stage) {
         try {
@@ -28,9 +38,12 @@ public class Main extends Application {
     }
 
     /**
-     * Initialize and start the program in GUI interface.
+     * Launches the Blob chatbot GUI.
+     * <p>
+     * Calls {@code launch()} to start the JavaFX application.
+     * </p>
      *
-     * @param args not used
+     * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
         launch(Main.class, args);

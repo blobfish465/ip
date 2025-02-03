@@ -8,13 +8,15 @@ import java.util.List;
 /**
  * Handles all user interface operations for the Blob application.
  * This class manages inputs and outputs, interacting directly with the user.
+ * It supports both console-based interaction and GUI by storing output messages.
  */
 public class Ui {
     private final Scanner scanner;
     private StringBuilder output;
 
     /**
-     * Constructs a new UI object, initializing the scanner to read user input.
+     * Constructs a new {@code Ui} object, initializing the scanner to read user input.
+     * It also initializes an output buffer to store messages for GUI interactions.
      */
     public Ui() {
         this.scanner = new Scanner(System.in);
@@ -23,8 +25,9 @@ public class Ui {
 
     /**
      * Adds a message to the output buffer.
+     * This is used for GUI interaction where the response needs to be returned as a string.
      *
-     * @param message The message to add.
+     * @param message The message to add to the output buffer.
      */
     private void appendMessage(String message) {
         if (output.length() > 0) {
@@ -35,8 +38,9 @@ public class Ui {
 
     /**
      * Retrieves and clears the current output buffer.
+     * This is used in the GUI to fetch accumulated messages for display.
      *
-     * @return The current output as a string.
+     * @return The accumulated messages as a single string.
      */
     public String getOutput() {
         String result = output.toString();
