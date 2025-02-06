@@ -47,10 +47,12 @@ application {
 }
 
 shadowJar {
+    archiveFileName = 'Blob.jar'
     archiveBaseName = "Blob"
     archiveClassifier = null
 }
 
 run {
     standardInput = System.in
+    enableAssertions = true
 }
