@@ -1,10 +1,10 @@
 package blob.command;
 
+import blob.TaskList;
 import blob.exception.BlobExceptions;
 import blob.model.Task;
 import blob.storage.Storage;
 import blob.ui.Ui;
-import blob.TaskList;
 
 /**
  * Represents a command to mark a task as done in the task list.

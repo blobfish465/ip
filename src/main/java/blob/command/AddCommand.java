@@ -1,9 +1,9 @@
 package blob.command;
 
+import blob.TaskList;
 import blob.model.Task;
 import blob.storage.Storage;
 import blob.ui.Ui;
-import blob.TaskList;
 
 /**
  * Represents a command to add a task to the task list.

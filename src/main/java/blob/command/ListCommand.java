@@ -1,11 +1,9 @@
 package blob.command;
 
+import blob.TaskList;
 import blob.exception.BlobExceptions;
 import blob.storage.Storage;
 import blob.ui.Ui;
-import blob.TaskList;
-
-import java.io.IOException;
 
 /**
  * Represents a command to list all tasks in the task list.

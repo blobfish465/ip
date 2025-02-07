@@ -1,13 +1,12 @@
 package blob;
 
-import java.io.IOException;
-
 import blob.controller.MainWindow;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * A JavaFX-based GUI for the Blob chatbot using FXML.

@@ -1,7 +1,6 @@
 package blob;
 
 import blob.model.Task;
-
 import java.util.ArrayList;
 import java.util.List;
 

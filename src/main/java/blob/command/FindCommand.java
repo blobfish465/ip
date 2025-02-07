@@ -1,9 +1,8 @@
 package blob.command;
 
+import blob.TaskList;
 import blob.storage.Storage;
 import blob.ui.Ui;
-import blob.TaskList;
-
 import java.util.List;
 
 /**
