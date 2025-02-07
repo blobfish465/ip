@@ -9,6 +9,8 @@ import java.time.format.DateTimeParseException;
  * This class extends the generic Task class by adding support for start and end times, making it suitable for events.
  */
 public class Event extends Task {
+
+    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HHmm";
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
 
@@ -21,32 +23,34 @@ public class Event extends Task {
      */
     public Event(String description, String start, String end) {
         super(description);
-        setTimes(start, end);
+        this.startDateTime = parseDateTime(start);
+        this.endDateTime = parseDateTime(end);
     }
 
     /**
-     * Sets the start and end times for the event by parsing the input strings.
-     * If the parsing fails for either time, both startDateTime and endDateTime are set to null,
-     * and an error message is printed.
+     * Parses the given date and time string into a LocalDateTime object.
      *
-     * @param start The start time string to parse.
-     * @param end The end time string to parse.
+     * This method takes a string representation of a date and time, which should conform to the
+     * format "yyyy-MM-dd HHmm". It attempts to parse the string into a LocalDateTime object.
+     * If the parsing fails due to a formatting error, the method returns {@code null}.
+     *
+     * @param dateTime The date and time string to parse, expected to be in the format "yyyy-MM-dd HHmm".
+     * @return A LocalDateTime object representing the specified date and time, or {@code null}
+     *         if the string cannot be parsed due to formatting issues.
+     * @throws DateTimeParseException if the dateTime string does not conform to the expected format,
+     *         this exception is caught within the method and results in a {@code null} return.
      */
-    private void setTimes(String start, String end) {
+    private LocalDateTime parseDateTime(String dateTime) {
         try {
-            this.startDateTime = LocalDateTime.parse(start,
-                    DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
-            this.endDateTime = LocalDateTime.parse(end,
-                    DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+            return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(DATE_TIME_FORMAT));
         } catch (DateTimeParseException e) {
-            System.out.println("Error parsing start or end time: " + e.getMessage());
-            this.startDateTime = null;
-            this.endDateTime = null;
+            return null;
         }
         assert (startDateTime != null && endDateTime != null)
                 || (startDateTime == null && endDateTime == null)
                     : "Both startDateTime and endDateTime should be set or null";
     }
+
 
     /**
      * Formats a LocalDateTime object into a more readable string.
