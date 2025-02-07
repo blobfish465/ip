@@ -25,6 +25,9 @@ public class Event extends Task {
         super(description);
         this.startDateTime = parseDateTime(start);
         this.endDateTime = parseDateTime(end);
+        assert (startDateTime != null && endDateTime != null)
+                || (startDateTime == null && endDateTime == null)
+                : "Both startDateTime and endDateTime should be set or null";
     }
 
     /**
@@ -46,9 +49,6 @@ public class Event extends Task {
         } catch (DateTimeParseException e) {
             return null;
         }
-        assert (startDateTime != null && endDateTime != null)
-                || (startDateTime == null && endDateTime == null)
-                    : "Both startDateTime and endDateTime should be set or null";
     }
 
 
