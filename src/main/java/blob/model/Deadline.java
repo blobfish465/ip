@@ -37,6 +37,8 @@ public class Deadline extends Task {
                     + ". Use yyyy-MM-dd HHmm format.");
             this.dueDateTime = null;
         }
+        assert this.dueDateTime != null
+                : "Due date time should be parsed correctly and not be null";
     }
 
     /**

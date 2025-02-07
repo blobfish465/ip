@@ -43,6 +43,9 @@ public class Event extends Task {
             this.startDateTime = null;
             this.endDateTime = null;
         }
+        assert (startDateTime != null && endDateTime != null)
+                || (startDateTime == null && endDateTime == null)
+                    : "Both startDateTime and endDateTime should be set or null";
     }
 
     /**

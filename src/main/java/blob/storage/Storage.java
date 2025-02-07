@@ -62,7 +62,10 @@ public class Storage {
     public void save(ArrayList<Task> tasks) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (Task task : tasks) {
-                writer.write(task.toFileFormat() + "\n");
+                String taskData = task.toFileFormat();
+                assert taskData != null && !taskData.isEmpty()
+                        : "Task data to be saved should not be null or empty";
+                writer.write(taskData + "\n");
             }
         }
     }
