@@ -111,6 +111,7 @@ public abstract class Task {
             task.markDone();
         }
 
+        assert task != null : "Task object should not be null if data is valid";
         return task;
     }
 }
