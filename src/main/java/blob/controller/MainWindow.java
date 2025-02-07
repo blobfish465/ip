@@ -50,25 +50,37 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Handles user input when the send button is clicked or when the user presses Enter.
+     * Creates and displays a user dialog box with the given input.
+     * This method takes the user's input and displays it on the UI using a custom DialogBox.
      *
-     * <p>Creates two dialog boxes:
-     * <ul>
-     *     <li>One displaying the user's input.</li>
-     *     <li>One displaying the chatbot's response.</li>
-     * </ul>
-     * </p>
+     * @param input The text input provided by the user which will be displayed in the dialog box.
+     */
+    private void createUserDialog(String input) {
+        dialogContainer.getChildren().add(DialogBox.getUserDialog(input, userImage));
+    }
+
+    /**
+     * Creates and displays a Blob dialog box with the given response.
+     * This method takes the Blob's response to the user's input and displays it on the UI using a custom DialogBox.
      *
-     * <p>After processing, the user's input field is cleared.</p>
+     * @param response The response from the Blob which will be displayed in the dialog box.
+     */
+    private void createBlobDialog(String response) {
+        dialogContainer.getChildren().add(DialogBox.getBlobDialog(response, blobImage));
+    }
+
+    /**
+     * Handles the process of capturing user input, processing it through the Blob, and displaying both the input
+     * and response in the dialog boxes.
+     * This method retrieves the user's input from a text field, sends it to the Blob for processing,
+     * and then displays the user's input and Blob's response in the UI. It clears the input field after processing.
      */
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
         String response = blob.getResponse(input);
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getBlobDialog(response, blobImage)
-        );
+        createUserDialog(input);
+        createBlobDialog(response);
         userInput.clear();
     }
 }
