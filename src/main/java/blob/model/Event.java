@@ -9,7 +9,6 @@ import java.time.format.DateTimeParseException;
  * This class extends the generic Task class by adding support for start and end times, making it suitable for events.
  */
 public class Event extends Task {
-
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HHmm";
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;

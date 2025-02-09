@@ -103,6 +103,12 @@ public abstract class Task {
             String endTime = parts[4].trim();
             task = new Event(description, startTime, endTime);
             break;
+        case "P":
+            if (parts.length < 5) return null;
+            String startDate = parts[3].trim();
+            String endDate = parts[4].trim();
+            task = new PeriodTask(description, startDate, endDate);
+            break;
         default:
             System.out.println("Unknown task type: " + type);
         }

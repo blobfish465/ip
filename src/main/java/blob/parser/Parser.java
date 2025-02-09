@@ -11,6 +11,7 @@ import blob.command.UnmarkCommand;
 import blob.exception.BlobExceptions;
 import blob.model.Deadline;
 import blob.model.Event;
+import blob.model.PeriodTask;
 import blob.model.ToDo;
 
 /**
@@ -85,6 +86,15 @@ public class Parser {
                 throw new BlobExceptions.IllegalFormatException("event <description> /from <yyyy-MM-dd HHmm> /to <yyyy-MM-dd HHmm>");
             }
             return new AddCommand(new Event(eventParts[0], eventParts[1], eventParts[2]));
+        case "period":
+            if (!arguments.contains("/between") || !arguments.contains("/and")) {
+                throw new BlobExceptions.IllegalFormatException("Usage: period <description> /between <yyyy-MM-dd> /and <yyyy-MM-dd>");
+            }
+            String[] periodParts = arguments.split(" /between | /and ");
+            if (periodParts.length < 3) {
+                throw new BlobExceptions.IllegalFormatException("period <description> /between <yyyy-MM-dd> /and <yyyy-MM-dd>");
+            }
+            return new AddCommand(new PeriodTask(periodParts[0], periodParts[1], periodParts[2]));
         case "delete":
             if (arguments.isEmpty()) {
                 throw new BlobExceptions.IllegalFormatException("Usage: delete <task number>");
