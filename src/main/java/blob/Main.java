@@ -29,6 +29,7 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             fxmlLoader.<MainWindow>getController().setBlob(new Blob("data/Blob.txt"));
             Scene scene = new Scene(ap);
+            stage.setTitle("Blob");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
