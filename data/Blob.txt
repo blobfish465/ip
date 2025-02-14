@@ -1,5 +1,8 @@
-T | 1 | read book
 E | 0 | team meeting | 2025-03-01 1700 | 2025-03-01 2000
 D | 0 | submit report | 2025-03-01 1700
 P | 0 | Collect certificate | 2025-01-15 | 2025-01-25
 P | 0 | apply job | 2025-01-15 | 2025-01-25
+T | 0 | sleep
+D | 0 | submit report | 2025-03-01 1700
+T | 0 | read book
+E | 0 | team meeting | 2025-03-01 1700 | 2025-03-01 2000
